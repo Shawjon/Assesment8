@@ -160,6 +160,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DatabaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IdentityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,6 +252,9 @@
     <Content Include="Views\Database\EditGuest.cshtml" />
     <Content Include="Views\Database\Index.cshtml" />
     <Content Include="Views\Database\Summary.cshtml" />
+    <Content Include="Views\Identity\Registration.cshtml" />
+    <Content Include="Views\Identity\Login.cshtml" />
+    <Content Include="Views\Identity\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

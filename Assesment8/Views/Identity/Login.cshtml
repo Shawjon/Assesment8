@@ -1,0 +1,16 @@
+﻿@model Assesment8.Models.RegistrationModel
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Identity", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    @Html.LabelFor(x => x.UserName,"Email address") @Html.TextBoxFor(x => x.UserName)
+    <br />
+
+    @Html.LabelFor(x => x.Password) @Html.PasswordFor(x => x.Password)
+
+
+
+    <input class="btn" type="submit" value="Login" />
+}
+

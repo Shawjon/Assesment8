@@ -11,6 +11,7 @@ namespace Assesment8.Controllers
     {
        
         // GET: Database
+        
         public ActionResult Index()
         {
             JonPartyDBEntities ORM = new JonPartyDBEntities();
@@ -18,6 +19,7 @@ namespace Assesment8.Controllers
             return View();
 
         }
+        [Authorize]
         public ActionResult AddGuest()
         {
             return View();
@@ -131,6 +133,7 @@ namespace Assesment8.Controllers
             ORM.SaveChanges();
             return RedirectToAction("DishList");
         }
+        [Authorize]
         public ActionResult DeleteDish(int DishID)
         {
             JonPartyDBEntities ORM = new JonPartyDBEntities();

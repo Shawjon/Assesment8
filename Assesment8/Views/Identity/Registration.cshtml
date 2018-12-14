@@ -1,0 +1,27 @@
+﻿@model Assesment8.Models.RegistrationModel
+<h2>Register</h2>
+
+@using (Html.BeginForm("Registration", "Identity", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    @Html.LabelFor(x => x.UserName, "Email address") @Html.TextBoxFor(x => x.UserName)
+    <br />
+    @Html.LabelFor(x => x.Password) @Html.PasswordFor(x=>x.Password)
+    <br />
+    @Html.LabelFor(x => x.ConfirmPassword) @Html.PasswordFor(x => x.ConfirmPassword)
+    <br />
+
+
+    @Html.LabelFor(x => x.FirstName) @Html.TextBoxFor(x => x.FirstName)
+    <br />
+    @Html.LabelFor(x => x.LastName) @Html.TextBoxFor(x => x.LastName)
+    <br />
+
+    @Html.LabelFor(x => x.AttendanceDate, "Date to attend") @Html.EditorFor(x => x.AttendanceDate, "dd/MM/yyyy")
+    <br />
+    @Html.LabelFor(x => x.PlusOne) @Html.TextBoxFor(x => x.PlusOne, "None")
+    <br />
+    
+
+    <input class="btn" type="submit" value="Register" />
+}

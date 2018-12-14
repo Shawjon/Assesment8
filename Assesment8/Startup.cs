@@ -19,8 +19,6 @@ namespace Assesment8
         {
             //sets up dependenceys when the app starts up---------
 
-
-
             //connection string
             const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=JonPartyDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             //add connection string to db context
@@ -32,8 +30,15 @@ namespace Assesment8
 
 
             //add to the owin context UserManager the identity user dependency using the user store
-            app.CreatePerOwinContext<UserManager<IdentityUser>>(
-                (opt, cont) => new UserManager<IdentityUser>(cont.Get<UserStore<IdentityUser>>()));
+            app.CreatePerOwinContext<UserManager<IdentityUser>>((opt, cont) => new UserManager<IdentityUser>(cont.Get<UserStore<IdentityUser>>()));
+
+            //login stuff for user sessions
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/Identity/Login"),
+            });
         }
     }
 }
+
