@@ -5,20 +5,33 @@
 <div class="jumbotron">
     <h1>Quicken Loans Holiday Party!</h1>
     <div class="lead">Bundle up in your best "Lumberjack Chic" attire because this year we're partying inside and out!</div>
-    <b class="btn btn-info"><a href="~/Identity/Registration">Rsvp!</a></b>
-</div>
+    @if (User.Identity.IsAuthenticated == false)
+    {
+        <div>You Are currently not Logged in</div>
+        <b class="btn btn-info"><a href="~/Identity/Login">Login!</a></b>
+        <b class="btn btn-info"><a href="~/Identity/Registration">Rsvp!</a></b>
+    }
+    else
+    {
+        <div>You Are currently Logged in, @User.Identity.Name</div>
 
-<div class="row">
-    <div class="col-md-6">
-        <h2>Bring a dish</h2>
-        <div class="Para">
-            Bring something tasty! We will have a potluck area for those who want to bring a dish!
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Bring a dish</h2>
+                <div class="Para">
+                    Bring something tasty! We will have a potluck area for those who want to bring a dish!
+                </div>
+                <a class="btn btn-default" @Html.ActionLink("Bring a dish", "AddDish", "Database")
+            </div>
+            <div class="col-md-6">
+                <h2>View Guestlist / Edit RSVP</h2>
+                <div class="Para">Here is a list of all of the people Who have RSVP-ed. Click below to change your RSVP or just to look</div>
+                <a class="btn btn-default" @Html.ActionLink("View/Edit RSVP", "Index", "Identity")
+
+            </div>
+            
+
+
         </div>
-        <a class="btn btn-default" @Html.ActionLink("Bring a dish", "AddDish", "Database")
-    </div>
-    <div class="col-md-6">
-        <h2>View Guestlist / Edit RSVP</h2>
-        <div class="Para">Here is a list of all of the people Who have RSVP-ed. Click below to change your RSVP or just to look</div>
-        <a class="btn btn-default" @Html.ActionLink("View/Edit RSVP", "Index", "Identity")
+    }
 
-    </div>

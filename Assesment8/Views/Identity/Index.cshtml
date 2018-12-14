@@ -27,12 +27,12 @@
             Guest
         </th>
 
-        <th>
+        @*<th>
             Edit
         </th>
         <th>
             Delete
-        </th>
+        </th>*@
     </tr>
     @foreach (var guest in ViewBag.GuestList)
     {
@@ -43,8 +43,8 @@
             <td>@guest.AttendanceDate</td>
             <td>@guest.EmailAddress</td>
             <td>@guest.PlusOne</td>
-            <td><a href="~/database/EditGuest?GuestID=@guest.GuestID" class="btn-default ">Edit this Guest</a></td>
-            <td><a href="~/database/DeleteGuest?GuestID=@guest.GuestID" class="btn-default ">Delete this Guest</a></td>
+            @*<td><a href="~/database/EditGuest?GuestID=@guest.GuestID" class="btn-default ">Edit this Guest</a></td>
+            <td><a href="~/database/DeleteGuest?GuestID=@guest.GuestID" class="btn-default ">Delete this Guest</a></td>*@
 
         </tr>
     }

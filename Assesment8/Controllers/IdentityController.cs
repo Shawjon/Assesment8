@@ -112,12 +112,8 @@ namespace Assesment8.Controllers
             
             if (User.Identity.Name != null)
             {
-
-                //use the instance that has been created.
-                authenticationManager.SignOut();
-                
+                authenticationManager.SignOut();   
                 return RedirectToAction("Index", "Home");
-                
             }
             return RedirectToAction("Index", "Home");
 
