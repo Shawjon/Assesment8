@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "DishList";
+}
+
+<h2>Dish List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Dish ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Phone Number
+        </th>
+        <th>
+            Dish Name
+        </th>
+        <th>
+            Dish Desciption
+        </th>
+        <th>
+            Options
+        </th>
+
+        <th>
+            Edit
+        </th>
+        <th>
+            Delete
+        </th>
+    </tr>
+    @foreach (var dish in ViewBag.DishList)
+    {
+        <tr>
+            <td>@dish.DishID</td>
+            <td>@dish.PersonName</td>
+            <td>@dish.PhoneNumber</td>
+            <td>@dish.DishName</td>
+            <td>@dish.DishDescription</td>
+            <td>@dish.Options</td>
+            <td><a href="~/database/EditDish?DishID=@dish.DishID" class="btn-default ">Edit this Dish</a></td>
+            <td><a href="~/database/DeleteDish?DishID=@dish.DishID" class="btn-default ">Delete this Dish</a></td>
+
+        </tr>
+    }
+
+</table>
+
+<a href="~/Database/AddDish" class="btn-default">Click here to add a new Dish</a>

@@ -1,0 +1,25 @@
+﻿@model Assesment8.Models.Guest
+@{
+    ViewBag.Title = "Edit Guest";
+}
+
+<h2>Edit Guest</h2>
+<div class="container">
+    <form action="/Database/SaveGuestChanges" method="post">
+        <input type="hidden" name="GuestID" value="@Model.GuestID" />
+        <div class="form-group">
+            <input type="text" class="form-control" pattern="[A-z]{2,50}" title="No Numbers or symbols" name="FirstName" value="@Model.FirstName" />
+            <input type="text" class="form-control" pattern="[A-z]{2,50}" title="No Numbers or symbols" name="LastName" value="@Model.LastName" />
+        </div>
+        <div>The curent date attending is @Model.AttendanceDate</div>
+        <input type="date" class="form-control" name="AttendanceDate" max="2018-12-22" min="2018-12-15" value="@Model.AttendanceDate" required />
+        <input type="email" class="form-control" name="EmailAddress" pattern="([\w\.\-_]+)?\w+@('@')[\w-_]+(\.\w+){1,}" value="@Model.EmailAddress" />
+        <div>Are you bringing a guest? Please enter their name below.</div>
+        <input type="text" class="form-control" name="PlusOne" pattern="[A-z ]{2,50}" title="No Numbers or symbols" Value="@Model.PlusOne" />
+
+
+
+
+        <input type="submit" class="btn-group-lg" />
+    </form>
+</div>

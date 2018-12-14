@@ -1,0 +1,32 @@
+﻿@model Assesment8.Models.Dish
+@{
+    ViewBag.Title = "AddDish";
+}
+
+<h2>Bringing a Dish</h2>
+<div class="container">
+    <form action="/Database/SaveDish" method="post">
+        <input type="hidden" name="DishID" />
+        <div class="form-group">
+            <input type="text" class="form-control" name="PersonName" pattern="[A-z ]{2,50}" placeholder="Your Name" required />
+            <input type="text" class="form-control" name="PhoneNumber" pattern="[\d]{1,10}" placeholder="Phone Number" required />
+        </div>
+        <input type="text" class="form-control" name="DishName" pattern="[A-z ]{2,50}" placeholder="Dish Name" required />
+        <input type="text" class="form-control" name="DishDescription" pattern="[A-z .,!]{2,50}" placeholder="A brief Description" required />
+        <div class="form-group mt-2">
+            <label>Any Dietary Restrictions?</label>
+            @Html.DropDownListFor(model => model.Options, new List<SelectListItem>
+                { new SelectListItem{Text="N/A", Value="N/A"},
+                  new SelectListItem{Text="Gluten Free", Value="Gluten Free"},
+                  new SelectListItem { Text = "Vegetarian", Value = "Vegetarian" },
+                  new SelectListItem { Text = "Vegan", Value = "Vegan" },
+
+                },
+                 new { @class = "form-control", required = "required"})
+        </div>
+
+
+
+        <input type="submit" class="btn-group-lg" />
+    </form>
+</div>

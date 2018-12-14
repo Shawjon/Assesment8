@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2> Guest Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Guest ID
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Attendance Date
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Guest
+        </th>
+
+        <th>
+            Edit
+        </th>
+        <th>
+            Delete
+        </th>
+    </tr>
+    @foreach (var guest in ViewBag.GuestList)
+    {
+        <tr>
+            <td>@guest.GuestID</td>
+            <td>@guest.FirstName</td>
+            <td>@guest.LastName</td>
+            <td>@guest.AttendanceDate</td>
+            <td>@guest.EmailAddress</td>
+            <td>@guest.PlusOne</td>
+            <td><a href="~/database/EditGuest?GuestID=@guest.GuestID" class="btn-default ">Edit this Guest</a></td>
+            <td><a href="~/database/DeleteGuest?GuestID=@guest.GuestID" class="btn-default ">Delete this Guest</a></td>
+
+        </tr>
+    }
+
+</table>
+
+<a href="~/Database/AddGuest" class="btn-default ">Click here to add a new Guest</a>
+
+
