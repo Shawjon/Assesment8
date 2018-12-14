@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0c3e2a5b08574c5cb84ad6100e8634c8" Name="Diagram1">
-        <EntityTypeShape EntityType="JonPartyDBModel.Dish" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="JonPartyDBModel.Dish" Width="1.5" PointX="6.375" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="JonPartyDBModel.Guest" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="JonPartyDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="JonPartyDBModel.FK_Dish_Guest" ManuallyRouted="false" />
