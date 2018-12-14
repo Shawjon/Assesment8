@@ -24,7 +24,8 @@
                     <li>@Html.ActionLink("Login", "Login", "Identity")</li>
                     <li>@Html.ActionLink("Bring a dish", "AddDish", "Database")</li>
                     <li>@Html.ActionLink("View list of Dishes", "DishList", "Database")</li>
-                    <li class="navbar-brand ">Hello @User.Identity.Name</li>
+                    <li class="navbar-collapse ">Hello @User.Identity.Name</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Identity")</li>
                 </ul>
             </div>
         </div>

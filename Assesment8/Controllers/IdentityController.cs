@@ -106,8 +106,22 @@ namespace Assesment8.Controllers
 
             return View(loginModel);
         }
+        public ActionResult Logout()
+        {
+            var authenticationManager = HttpContext.GetOwinContext().Authentication;
+            
+            if (User.Identity.Name != null)
+            {
 
+                //use the instance that has been created.
+                authenticationManager.SignOut();
+                
+                return RedirectToAction("Index", "Home");
+                
+            }
+            return RedirectToAction("Index", "Home");
 
+        }
 
 
         [Authorize]

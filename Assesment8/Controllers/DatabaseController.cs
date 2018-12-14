@@ -74,17 +74,21 @@ namespace Assesment8.Controllers
 
             return RedirectToAction("Index");
         }
+        [Authorize]
         public ActionResult DishList()
         {
+            string currentemail = User.Identity.Name;
             JonPartyDBEntities ORM = new JonPartyDBEntities();
-            ViewBag.DishList = ORM.Dishes.ToList();
+            ViewBag.DishList = ORM.Dishes.Where(x => x.EmailAddress == currentemail).ToList();
             return View();
 
         }
+        [Authorize]
         public ActionResult AddDish()
         {
             return View();
         }
+        [Authorize]
         public ActionResult SaveDish(Dish newDish)
         {
             JonPartyDBEntities ORM = new JonPartyDBEntities();
