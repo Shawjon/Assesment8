@@ -6,8 +6,16 @@
 <h2>Character Data</h2>
 
 
+@if (@ViewBag.Characters[0]["culture"] == "")
+{
+    <p> @ViewBag.Characters[0]["name"] is a @ViewBag.Characters[0]["gender"] was born @ViewBag.Characters[0]["born"].</p>
 
+}
+else
+{
     <p> @ViewBag.Characters[0]["name"] is a @ViewBag.Characters[0]["gender"] was born @ViewBag.Characters[0]["born"],They are a @ViewBag.Characters[0]["culture"]!</p>
+
+}
 
 
 
