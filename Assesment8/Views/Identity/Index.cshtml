@@ -47,8 +47,11 @@
             @foreach (var character in ViewBag.Characterlist)
             {
                 if (character.EmailAddress == guest.EmailAddress)
-                 {
-                     <td><a href="~/database/GetCharacterData?CharacterName=@character.Name" class="btn-default ">view Favorite character</a></td>
+                {
+                    var Name = character.Name.ToString();
+                    var newName = Name.Replace("%20", " ");
+
+                    <td><a href="~/database/GetCharacterData?CharacterName=@character.Name" class="btn-default ">@newName Click for more info</a></td>
                  }
             }
             @*<td><a href="~/database/DeleteGuest?GuestID=@guest.GuestID" class="btn-default ">Delete this Guest</a></td>*@

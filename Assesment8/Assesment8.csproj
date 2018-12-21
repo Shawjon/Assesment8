@@ -168,6 +168,7 @@
     <Compile Include="Models\Character.cs">
       <DependentUpon>JonPartyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CharacterProfile.cs" />
     <Compile Include="Models\Dish.cs">
       <DependentUpon>JonPartyDB.tt</DependentUpon>
     </Compile>
