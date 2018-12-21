@@ -25,8 +25,8 @@ namespace Assesment8.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Character> Characters { get; set; }
         public virtual DbSet<Dish> Dishes { get; set; }
         public virtual DbSet<Guest> Guests { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

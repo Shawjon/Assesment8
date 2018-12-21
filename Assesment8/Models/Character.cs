@@ -12,12 +12,13 @@ namespace Assesment8.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class Character
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int CharacterID { get; set; }
+        public string Name { get; set; }
+        public string House { get; set; }
+        public string Allegiance { get; set; }
+        public string Book { get; set; }
+        public string EmailAddress { get; set; }
     }
 }

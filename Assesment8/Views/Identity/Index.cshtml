@@ -34,6 +34,7 @@
             Delete
         </th>*@
     </tr>
+
     @foreach (var guest in ViewBag.GuestList)
     {
         <tr>
@@ -43,8 +44,14 @@
             <td>@guest.AttendanceDate</td>
             <td>@guest.EmailAddress</td>
             <td>@guest.PlusOne</td>
-            @*<td><a href="~/database/EditGuest?GuestID=@guest.GuestID" class="btn-default ">Edit this Guest</a></td>
-            <td><a href="~/database/DeleteGuest?GuestID=@guest.GuestID" class="btn-default ">Delete this Guest</a></td>*@
+            @foreach (var character in ViewBag.Characterlist)
+            {
+                if (character.EmailAddress == guest.EmailAddress)
+                 {
+                     <td><a href="~/database/GetCharacterData?CharacterName=@character.Name" class="btn-default ">view Favorite character</a></td>
+                 }
+            }
+            @*<td><a href="~/database/DeleteGuest?GuestID=@guest.GuestID" class="btn-default ">Delete this Guest</a></td>*@
 
         </tr>
     }

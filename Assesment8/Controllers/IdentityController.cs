@@ -25,7 +25,10 @@ namespace Assesment8.Controllers
         public ActionResult Index()
         {
                 JonPartyDBEntities ORM = new JonPartyDBEntities();
+                
                 ViewBag.GuestList = ORM.Guests.ToList();
+                ViewBag.Characterlist = ORM.Characters.ToList();
+                
                 return View();
                         
         }
@@ -50,14 +53,19 @@ namespace Assesment8.Controllers
 
                     //create the user based on our user model and assign the properties from the identity user to it...
                     var newGuest = new Guest();
+                    var newCharacter = new Character();
 
                     newGuest.FirstName = registrationGuest.FirstName;
                     newGuest.LastName = registrationGuest.LastName;
                     newGuest.AttendanceDate = registrationGuest.AttendanceDate;
                     newGuest.EmailAddress = registrationGuest.UserName;
                     newGuest.PlusOne = registrationGuest.PlusOne;
-                                        
+
+                    newCharacter.EmailAddress = registrationGuest.UserName;
+                    newCharacter.Name = registrationGuest.FavoriteCharacter;
+                    
                     //add the user to the ORM and save changes...
+                    ORM.Characters.Add(newCharacter);
                     ORM.Guests.Add(newGuest);
                     ORM.SaveChanges();
 

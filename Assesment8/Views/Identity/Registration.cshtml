@@ -1,4 +1,5 @@
-﻿@model Assesment8.Models.RegistrationModel
+﻿@using Assesment8.Models
+@model Assesment8.Models.RegistrationModel
 <h2>Register</h2>
 
 @using (Html.BeginForm("Registration", "Identity", FormMethod.Post))
@@ -21,7 +22,19 @@
     <br />
     @Html.LabelFor(x => x.PlusOne) @Html.TextBoxFor(x => x.PlusOne, "None")
     <br />
-    
+   
+    <e>Favorite Character</e>
+    @Html.DropDownListFor(x => x.FavoriteCharacter, new SelectList(
+        new List<Object>{ 
+            new { value = "Eddard%20Stark" , text = "Eddard Stark"  },
+            new { value = "Arya%20Stark" , text = "Arya Stark"  },
+            new { value = "Tyrion%20Lannister" , text = "Tyrion Lannister"  },
+            new { value = "Jon%20Snow" , text = "Jon Snow"  },
+            new { value = "Joffrey%20Baratheon" , text = "Joffrey Bathatheon"  },
+
+        },
+        "value",
+        "text"))
 
     <input class="btn" type="submit" value="Register" />
 }

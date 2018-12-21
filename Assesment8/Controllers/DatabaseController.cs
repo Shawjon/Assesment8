@@ -1,9 +1,12 @@
 ﻿using Assesment8.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace Assesment8.Controllers
 {
@@ -147,6 +150,50 @@ namespace Assesment8.Controllers
             ORM.SaveChanges();
 
             return RedirectToAction("DishList");
+        }
+
+
+
+
+
+
+
+        const string userAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
+        // GET: API
+        public ActionResult GetRawData()
+        {
+            HttpWebRequest request = WebRequest.CreateHttp(@"https://www.anapioficeandfire.com/api/characters/?name=Eddard%20Stark");
+            request.UserAgent = userAgent;
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                StreamReader data = new StreamReader(response.GetResponseStream());
+                ViewBag.RawData = data.ReadToEnd();
+            }
+
+            return View();
+        }
+        [Authorize]
+        public ActionResult GetCharacterData(string CharacterName)
+        {
+            HttpWebRequest request = WebRequest.CreateHttp(@"https://www.anapioficeandfire.com/api/characters/?name="+CharacterName);
+            request.UserAgent = userAgent;
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                StreamReader data = new StreamReader(response.GetResponseStream());
+                //do stuff with data here
+                string JsonData = data.ReadToEnd();
+                JObject CharacterData = JObject.Parse("{Character:" + JsonData + "}");
+                ViewBag.Characters = CharacterData["Character"];
+                //JObject dataObject = new JObject(data.ReadToEnd());
+            }
+
+            return View();
         }
     }
 }

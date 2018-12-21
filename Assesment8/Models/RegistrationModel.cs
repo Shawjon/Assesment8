@@ -27,8 +27,16 @@ namespace Assesment8.Models
         public DateTime AttendanceDate { get; set; }
         [Required]
         public string PlusOne { get; set; }
-        
+        public  string FavoriteCharacter { get; set; }
 
+        public enum choices
+        {
+            Eddard_Stark,
+            Arya_Stark,
+            tyrion_lannister,
+            Jon_Snow,
+            Joffrey_baratheon
+        }
 
     }
 }

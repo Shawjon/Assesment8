@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="JonPartyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="CharacterID" />
+          </Key>
+          <Property Name="CharacterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="House" Type="nvarchar" MaxLength="50" />
+          <Property Name="Allegiance" Type="nvarchar" MaxLength="50" />
+          <Property Name="Book" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Dish">
           <Key>
             <PropertyRef Name="DishID" />
@@ -28,16 +39,6 @@
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PlusOne" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <Association Name="FK_Dish_Guest">
           <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
           <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
@@ -51,9 +52,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="JonPartyDBModelStoreContainer">
+          <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Dish_Guest" Association="Self.FK_Dish_Guest">
             <End Role="Guest" EntitySet="Guest" />
             <End Role="Dish" EntitySet="Dish" />
@@ -64,6 +65,17 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JonPartyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="CharacterID" />
+          </Key>
+          <Property Name="CharacterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="House" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Allegiance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Book" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Dish">
           <Key>
             <PropertyRef Name="DishID" />
@@ -89,16 +101,6 @@
           <Property Name="PlusOne" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Dishes" Relationship="Self.FK_Dish_Guest" FromRole="Guest" ToRole="Dish" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <Association Name="FK_Dish_Guest">
           <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
           <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
@@ -112,9 +114,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="JonPartyDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Characters" EntityType="Self.Character" />
           <EntitySet Name="Dishes" EntityType="Self.Dish" />
           <EntitySet Name="Guests" EntityType="Self.Guest" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <AssociationSet Name="FK_Dish_Guest" Association="Self.FK_Dish_Guest">
             <End Role="Guest" EntitySet="Guests" />
             <End Role="Dish" EntitySet="Dishes" />
@@ -126,6 +128,18 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="JonPartyDBModelStoreContainer" CdmEntityContainer="JonPartyDBEntities">
+          <EntitySetMapping Name="Characters">
+            <EntityTypeMapping TypeName="JonPartyDBModel.Character">
+              <MappingFragment StoreEntitySet="Character">
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Allegiance" ColumnName="Allegiance" />
+                <ScalarProperty Name="Book" ColumnName="Book" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Dishes">
             <EntityTypeMapping TypeName="JonPartyDBModel.Dish">
               <MappingFragment StoreEntitySet="Dish">
@@ -148,17 +162,6 @@
                 <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
                 <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
                 <ScalarProperty Name="PlusOne" ColumnName="PlusOne" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="JonPartyDBModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

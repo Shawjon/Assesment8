@@ -22,6 +22,8 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("RSVP", "Registration", "Identity")</li>
                     <li>@Html.ActionLink("Login", "Login", "Identity")</li>
+                    <li>@Html.ActionLink("List of people", "Index", "Identity")</li>
+
                     <li>@Html.ActionLink("Bring a dish", "AddDish", "Database")</li>
                     <li>@Html.ActionLink("View list of Dishes", "DishList", "Database")</li>
                     <li class="navbar-collapse ">Hello @User.Identity.Name</li>
